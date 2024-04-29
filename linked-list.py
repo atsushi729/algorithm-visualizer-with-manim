@@ -1,5 +1,6 @@
 from manim import *
 
+
 class LinkedListVisualization(Scene):
     def construct(self):
         title = Text("Linked List Visualization", font_size=24)
@@ -13,7 +14,7 @@ class LinkedListVisualization(Scene):
         action_text = Text('', font_size=36).to_corner(UP + RIGHT)
 
         def create_node(text, color=WHITE):
-            node = Circle(radius=0.75, color=color)
+            node = Rectangle(width=2, height=1, color=color)
             txt = Text(text, color=BLACK, font_size=32).move_to(node.get_center())
             return node, txt
 
