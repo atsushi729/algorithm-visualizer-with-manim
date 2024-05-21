@@ -19,7 +19,7 @@ class LinkedListVisualization(Scene):
             node_group = VGroup(node, num)
 
             # Create arrow if not the last element
-            if i < len(elements) - 1:
+            if i < len(elements):
                 arrow = Arrow(start=node.get_right(), end=node.get_right() + RIGHT * 0.8, buff=0.1, stroke_width=2)
                 node_group.add(arrow)
 
@@ -43,12 +43,11 @@ class LinkedListVisualization(Scene):
         new_element = 6
         new_node = Square(side_length=1).set_stroke(color=WHITE, width=3)
         new_num = Text(str(new_element), color=WHITE).move_to(new_node.get_center())
-        new_arrow = Arrow(start=new_node.get_left(), end=new_node.get_left() - LEFT * 0.8, buff=0.1, stroke_width=2)
-        new_group = VGroup(new_node, new_num, new_arrow)
+        new_group = VGroup(new_node, new_num)
         new_group.next_to(linked_list, RIGHT, buff=0.1)
 
         self.play(Write(Text("Adding 6 to the linked list").next_to(linked_list, DOWN, buff=0.5)))
-        self.play(AnimationGroup(Create(new_node), Write(new_num), Create(new_arrow), lag_ratio=0.5))
+        self.play(AnimationGroup(Create(new_node), Write(new_num), lag_ratio=0.5))
         linked_list.add(new_group)
         self.wait(2)
 
